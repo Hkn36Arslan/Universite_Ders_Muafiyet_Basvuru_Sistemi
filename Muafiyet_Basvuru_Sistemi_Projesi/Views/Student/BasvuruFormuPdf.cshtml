@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onaylanan Başvuru Formu</title>
+<link rel="stylesheet" href="/css/formPdf.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<div class="container" id="pdfObject">
+    <!--! Header -->
+    <div class="header" >
+        <img src="/image/EtuLogo.png" alt="Etu Logo">
+        <h4>
+            <p style="text-align: center;">ERZURUM TEKNİK ÜNİVERSİTESİ</p>
+            <p>MÜHENDİSLİK VE MİMARLIK FAKÜLTESİ</p>   
+        </h4>
+    </div>
+    <p class="form-title">Ders Muafiyet Başvuru Dilekçesi</p>
+    <p style="align-self: flex-start; margin-left: 6rem;font-size: 17px;">
+        Tarih:<span id="date"></span>
+    </p>
+
+    <!--! Form -->
+    <form action="#" method="post" enctype="multipart/form-data">
+        <!--! Bölüm Başkanlığı Componenti -->
+        <div class="Component">
+            <div class="flex-label-input">
+                <span id="bolum_baskanligi" style="font-weight:bold;text-transform: capitalize;">doldurulacak</span>
+                <strong>Bölüm Başkanlığına</strong><br />
+            </div>
+        </div>
+        <hr />
+        <!--! Öğrenci Bilgi Componenti -->
+        <div class="Component">
+            <h3 style="font-size:20px;">Öğrenci Bilgileri</h3>
+            <div class="content">
+                <div class="flex-label-input">
+                    <label for="adi_soyadi">Adı-Soyadı</label>
+                    <span id="adi_soyadi">doldurulacak</span><br />
+                </div>
+                <div class="flex-label-input">
+                    <label for="tc_no">T.C. Kimlik No</label>
+                    <span id="tc_no">doldurulacak</span><br />
+                </div>
+                <div class="flex-label-input">
+                    <label for="ogrenci_no">Öğrenci No</label>
+                    <span id="ogrenci_no">doldurulacak</span><br />
+                </div>
+                <div class="flex-label-input">
+                    <label for="telefon">Telefon</label>
+                    <span id="telefon">doldurulacak</span><br />
+                </div>
+                <div class="flex-label-input">
+                    <label for="eposta">Eposta</label>
+                    <span id="eposta">doldurulacak</span><br />
+                </div>
+                <div class="flex-label-input">
+                    <label for="kayit_sekli">Kayıtlanma Şekli</label>
+                    <span id="kayit_sekli">doldurulacak</span><br />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <!--! Öğrencinin Önceki Eğitim Bİlgileri Componenti  -->
+        <div class="Component">
+            <h3 style="font-size:20px;">Eğitim Bilgileri</h3>
+            <div class="content">
+                <div class="flex-label-input">
+                    <label for="geldigi_Uni">Geldiği Üniversite</label>
+                    <span id="geldigi_Uni">doldurulacak</span><br />
+                </div>
+                <div class="flex-label-input">
+                    <label for="geldigi_fakulte">Geldiği Fakülte</label>
+                    <span id="geldigi_fakulte">doldurulacak</span><br />
+                </div>
+                <div class="flex-label-input">
+                    <label for="geldigi_bolum">Geldiği Bölüm</label>
+                    <span id="GeldigiBolum">doldurulacak</span><br />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <!--! Ders Tablosu Componenti -->
+        <div class="table_lesson" >
+            <table id="dersTablosu">
+                <thead>
+                <tr>
+                    <th colspan="3">Daha Önce Alınan Ders</th>
+                    <th colspan="4">Muaf Olmak İstenen Ders</th>
+                </tr>
+                <tr>
+                    <th>Adı</th>
+                    <th class="num">Kredi</th>
+                    <th class="num">AKTS</th>
+                    <th>Adı</th>
+                    <th class="num">Kredi</th>
+                    <th class="num">AKTS</th>
+                    <th class="num">Kodu</th>
+                </tr>
+                </thead>
+                <tbody id="derslerBody">
+               
+                </tbody>
+            </table>
+            <a id="ekleButton" style="cursor: none;display: none;"></a>
+        </div> 
+        <hr />
+        <!--! Yönetmelik Maddesi Componenti  -->
+        <div class="Component" >
+            <div class="yonetmelik">
+            <span style="font-size: 0.7rem"
+                  >ERZURUM TEKNİK ÜNİVERSİTESİ LİSANS EĞİTİM-ÖĞRETİM VE SINAV
+                  YÖNETMELİĞİ</span
+            >
+                <hr />
+                <p style="font-size: 0.7rem">
+                    MADDE 16-(1) Ders muafiyeti başvuruları, öğrencinin Üniversiteye
+                    ders kaydı yaptırdığı ilk yarıyılın yılın ilk haftasının sonuna
+                    kadar yapılır. Ek kontenjan ve dikey geçiş sınavı ile kayıt
+                    yaptıran öğrenciler, Üniversiteye kayıt yaptırdıkları tarihi takip
+                    eden ilk hafta içerisinde muafiyet talebinde bulunabilirler.
+                    Sonraki yarıyıl yıllarda yapılacak muafiyet talepleri kabul
+                    edilmez. Öğrenciler, lisans öğrenimlerine devam ederken eş zamanlı
+                    olarak başka bir yükseköğretim programından alıp başarılı olduğu
+                    ilgili ders derslerden başarılı oldukları yarıyılı yılı takip eden
+                    yarıyıl/yılın ilk haftası içerisinde muafiyet talebinde
+                    bulunabilirler. (2) ÖSYM tarafından yerleştirilen, Üniversiteye
+                    yeniden kayıt hakkı kazanan, diğer yükseköğretim kurumlarından
+                    Üniversiteye yatay geçiş yapan, dikey geçiş ile kayıt yaptıran ve
+                    Üniversite içerisinde bölüm değiştiren öğrencilerin, daha önce
+                    devam ettikleri yükseköğretim programında başarılı oldukları
+                    derslerden 27 nci maddeye göre muaf olarak değerlendirilebilmesi
+                    için dekanlığa müdürlüğe muaf olmak istediklerini belirten bir
+                    dilekçe ve ekinde not döküm belgesi ile ders içeriklerini kapsayan
+                    onaylı belgelerle başvurmaları gerekir. İlgili yönetim
+                    kurullarınca muafiyetleri uygun görülen derslerin harf notları,
+                    öğrencinin not döküm belgesine aynen işlenir. Sayısal notlar ise
+                    Yükseköğretim Kurulunun not dönüşüm tablosuna göre harf notlarına
+                    çevrilir ve işlenir.
+                </p>
+            </div>
+        </div>
+        <hr />
+    </form>
+    <!-- ! End / -->
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var simdikiTarih = new Date();
+    var gun = simdikiTarih.getDate();
+    var ay = simdikiTarih.getMonth() + 1;
+    var yil = simdikiTarih.getFullYear();
+    var tarih = (gun < 10 ? "0" + gun : gun) + "/" + (ay < 10 ? "0" + ay : ay) + "/" + yil;
+    document.getElementById('date').textContent = tarih;
+    var urlParams = new URLSearchParams(window.location.search);
+
+    // Her bir form verisini uygun alanlara yerleştir
+    for (var pair of urlParams.entries()) {
+        var element = document.getElementById(pair[0]);
+        if (element) {
+            element.textContent = pair[1];
+        }
+    }
+
+    // Dersler tablosunu temsil eden tbody elementini seç
+    var derslerBody = document.getElementById("derslerBody");
+
+    // URL parametrelerinden ders bilgilerini al
+    var dersBilgileri = {};
+    for (var pair of urlParams.entries()) {
+        if (pair[0].includes("dersInput_")) {
+            var keys = pair[0].split('_');
+            var row = parseInt(keys[1], 10);
+            var col = parseInt(keys[2], 10);
+            if (!dersBilgileri[row]) {
+                dersBilgileri[row] = {};
+            }
+            dersBilgileri[row][col] = pair[1];
+        }
+    }
+
+    // Ders bilgilerini tabloya ekle
+    for (var row in dersBilgileri) {
+         var newRow = document.createElement("tr");
+        for (var col = 1; col <= 7; col++) { 
+            var cell = document.createElement("td");
+            var input = document.createElement("input");
+            input.setAttribute("type", "text");
+            input.setAttribute("readonly", "readonly");
+            input.setAttribute("class", "inputDers");
+            input.setAttribute("name","dersInput_" + row + "_" + col);
+            if (dersBilgileri[row][col]) {
+                input.value = dersBilgileri[row][col];
+            }
+            cell.appendChild(input);
+            newRow.appendChild(cell);
+        }
+        derslerBody.appendChild(newRow);
+    }
+    let div = document.querySelector("#pdfObject");
+  
+        let opt = {
+            margin: [0.5, 0, 0, 0],
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { 
+                dpi: 192,
+                scale: 2,
+                letterRendering: true,
+                scrollX: 0,
+                scrollY: 0
+            },
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().from(div).set(opt).output('datauristring').then(function(pdfDataUri) {
+            console.log(pdfDataUri);
+
+            // Yeni sekme aç ve PDF'yi orada göster
+            let pdfWindow = window.open("");
+            pdfWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Muafiyet Başvuru Belgesi</title>
+                        <style>
+                            body, html {
+                                margin: 0;
+                                padding: 0;
+                                height: 100%;
+                                overflow: hidden;
+                            }
+                            iframe {
+                                width: 100%;
+                                height: 100%;
+                                border: none;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <iframe src="${pdfDataUri}" frameborder="0"></iframe>
+                    </body>
+                </html>
+            `);
+            pdfWindow.document.close();
+
+            // PDF'yi base64 formatında al
+            let base64PDF = pdfDataUri.split(',')[1];
+
+            // FormData oluştur
+            let formData = new FormData();
+            formData.append('pdf', base64PDF);
+
+            // AJAX ile PDF'yi gönder
+            fetch('/Home/SavePDF', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+});
+
+</script>
+
+
+</body>
+<script src="/js/form.js"></script>
+</html>

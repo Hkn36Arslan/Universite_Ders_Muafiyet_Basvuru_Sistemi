@@ -1,0 +1,53 @@
+body {
+  background-image: url("/image/Kampus.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  width: 26%;
+}
+
+.form-container form input[type="text"],
+.form-container form input[type="email"],
+.form-container form input[type="password"] {
+  margin-bottom: 20px;
+}
+
+.form-container form button[type="submit"] {
+  width: 100%;
+}
+
+.form-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.form-header img {
+  width: 10rem;
+  height: auto;
+}
+
+.form-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group-text {
+  width: 50px;
+  height: 38px;
+}

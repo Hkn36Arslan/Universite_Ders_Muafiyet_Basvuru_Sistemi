@@ -1,0 +1,168 @@
+/* ! Body */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: url("/image/Kampus.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: auto;
+}
+/* ************************************************* */
+/* ! Container */
+.container {
+  max-width: 700px;
+  margin: 0.5rem auto;
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* ************************************************* */
+/* ! Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header img {
+  max-width: 8rem;
+}
+
+/* ************************************************* */
+/* !Form */
+/* Form container */
+form {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+/* ************************************************* */
+.form-title {
+  align-self: flex-end;
+  margin-right: 4rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+/* ************************************************* */
+.Component {
+  margin-bottom: 1rem;
+}
+/* ************************************************* */
+.flex-label-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1rem;
+  margin-bottom: 1rem;
+}
+/* ************************************************* */
+.belgeler {
+  display: flex;
+}
+.belgeler .file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: auto;
+  list-style: none;
+  margin: 0 0.5em 0.5em 0;
+  text-decoration: none;
+  border: 1px solid #e1e1e1;
+  padding: 0.2rem 0.2rem;
+  background: repeat-x scroll 0 0 #ca2f2f;
+  color: #ffffff;
+}
+.belgeler .file:hover {
+  background: #e1e1e1;
+  color: #ca2f2f;
+}
+/* ************************************************* */
+/* Label style */
+label {
+  font-size: 1.1rem;
+  display: block;
+  float: left;
+  width: 9rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+/* Input style */
+input[type="text"],
+input[type="tel"],
+input[type="email"] {
+  width: 75%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+select {
+  width: 77%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+/* ************************************************* */
+/* Submit button style */
+input[type="submit"] {
+  width: calc(100%);
+  padding: 10px;
+  color: white;
+  background-color: cadetblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+/* ************************************************* */
+.yonetmelik {
+  border: 1px solid gray;
+  padding: 0 0.5rem;
+}
+/* ************************************************* */
+/* ! Ders Tablosu */
+.table_lesson {
+  width: 100%;
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.5rem;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 0.3rem;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+td input[type="text"],
+input[type="number"] {
+  width: 90%;
+  padding: 2px;
+  border-radius: 0px;
+}
+
+.table_lesson button {
+  background-color: cadetblue;
+  color: white;
+}
+
+.table_lesson button:hover {
+  background-color: #45a049;
+}
+/* ************************************************* */

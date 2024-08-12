@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muafiyet Başvuru Sayfası</title>
+    <link rel="stylesheet" href="/css/form.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .logout{
+          display:flex;
+          align-items:center;
+          justify-content:flex-end;
+        }
+        .logout-icon{
+          text-decoration:none; 
+          font-size:25px;
+          margin-right:3px;
+          color:white;
+          margin-right:2rem;
+          margin-top:1rem;
+          }
+          .logout-icon:hover{
+          color:red;
+          }
+      </style>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7-beta.19/inputmask.min.js"></script>
+  </head>
+  <body>
+    <div class="logout">
+        <a href="@Url.Action("LogoutAndRedirect", "Home")" class="fas fa-sign-out-alt logout-icon"></a>
+    </div>
+    <div class="container">
+      <!--! Header -->
+      <div class="header">
+            <img src="~/image/EtuLogo.png" alt="EtuLogo" />
+          
+        <h4>
+          <p style="text-align: center;">ERZURUM TEKNİK ÜNİVERSİTESİ</p>
+          <p>MÜHENDİSLİK VE MİMARLIK FAKÜLTESİ</p>   
+        </h4>
+            
+      </div>
+      <p class="form-title">Ders Muafiyet Başvuru Dilekçesi</p>
+      <p style="align-self: flex-start; margin-left: 4.5rem">
+        Tarih:<span id="date"></span>
+      </p>
+      <!--! Form -->
+      <form 
+      asp-action="SubmitApplication" method="post" enctype="multipart/form-data" id="myForm">
+        <!--! Bölüm Başkanlığı Componenti -->
+        <div class="Component">
+          <div class="flex-label-input">
+            <label for="bolum_baskanligi">Bölüm Başkanlığı:</label>
+            <select id="bolum_baskanligi" name="BolumBaskanligi">
+              <option value="Bilgisayar Mühendisliği">
+                Bilgisayar Mühendisliği
+              </option>
+              <option value="Elektrik Elektronik Mühendisliği">
+                Elektrik Elektronik Mühendisliği
+              </option>
+               <option value="Endüstri Mühendisliği">
+                Endüstri Mühendisliği
+              </option>
+              <option value="Makine Mühendisliği">
+                Makine Mühendisliği
+              </option>
+              <option value="Mimarlık">Mimarlık</option></select
+            ><br />
+          </div>
+        </div>
+        <hr />
+        <!--! Öğrenci Bilgi Componenti -->
+        <div class="Component">
+          <h3>Öğrenci Bilgileri</h3>
+          <div class="content">
+            <div class="flex-label-input">
+              <label for="adi_soyadi">Ad Soyad:</label>
+              <input
+                type="text"
+                id="adi_soyadi"
+                name="AdSoyad"
+                required
+              /><br />
+            </div>
+            <div class="flex-label-input">
+              <label for="tc_no">T.C. Kimlik No:</label>
+              <input
+                type="text"
+                id="tc_no"
+                name="Tckimlik"
+                required
+                value="@ViewBag.OturumTC"
+                readonly
+              /><br />
+            </div>
+            <div class="flex-label-input">
+              <label for="ogrenci_no">Öğrenci No:</label>
+              <input
+                type="text"
+                id="ogrenci_no"
+                name="OgrNo"
+              /><br />
+            </div>
+            <div class="flex-label-input">
+              <label for="telefon">Telefon:</label>
+              <input 
+                  type="tel" 
+                  id="telefon" 
+                  name="Tel" 
+                  required 
+                  pattern="[5]{1}[0-9]{9}" 
+                  placeholder="5XX XXX XX XX"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" 
+              /><br />
+            </div>
+            <div class="flex-label-input">
+              <label for="eposta">Eposta:</label>
+              <input type="email" id="eposta" name="Mail" required readonly value="@ViewBag.Mail" /><br />
+            </div>
+            <div class="flex-label-input">
+              <label for="kayit_sekli">Kayıtlanma Şekli:</label>
+              <select id="kayit_sekli" name="KayitTur">
+                <option value="Yatay Geçiş">Yatay Geçiş</option>
+                <option value="Dikey Geçiş">Dikey Geçiş</option>
+                <option value="Yeni Kayit">Yeni Kayıt</option></select
+              ><br />
+            </div>
+          </div>
+        </div>
+        <hr />
+        <!--! Öğrencinin Önceki Eğitim Bİlgileri Componenti  -->
+        <div class="Component">
+          <h3>Eğitim Bilgileri</h3>
+          <div class="content">
+            <div class="flex-label-input">
+              <label for="geldigi_Uni">Geldiği Üniversite:</label>
+              <input
+                type="text"
+                id="geldigi_Uni"
+                name="GeldigiUni"
+                required
+              /><br />
+            </div>
+            <div class="flex-label-input">
+              <label for="geldigi_fakulte">Geldiği Fakülte:</label>
+              <input
+                type="text"
+                id="geldigi_fakulte"
+                name="GeldigiFak"
+                required
+              /><br />
+            </div>
+            <div class="flex-label-input">
+              <label for="GeldigiBolum">Geldiği Bölüm:</label>
+              <input
+                type="text"
+                id="GeldigiBolum"
+                name="GeldigiBolum"
+                required
+              /><br />
+            </div>
+          </div>
+        </div>
+        <hr />
+        <!--! Ders Tablosu Componenti -->
+        <div class="table_lesson">
+          <table id="dersTablosu">
+            <thead>
+              <tr>
+                <th colspan="3">Daha Önce Aldığım Dersin</th>
+                <th colspan="4">Muaf Olmak İstediğim Dersin</th>
+              </tr>
+              <tr>
+                <th style="width: 30%;">Adı</th>
+                <th style="width: 10%;">Kredisi</th>
+                <th style="width: 10%;">AKTS'si</th>
+                <th style="width: 30%;">Adı</th>
+                <th style="width: 10%;">Kredisi</th>
+                <th style="width: 10%;">AKTS'si</th>
+                <th style="width: 10%;">Kodu</th>
+              </tr>
+            </thead>
+            <tbody id="derslerBody">
+              <tr>
+                <td><input type="text" name="OncekiDersAdi" class="inputDers" /></td>
+                <td><input type="number" name="OncekiDersKredisi" class="inputDers" min="0"/></td>
+                <td><input type="number" name="OncekiDersAkts" class="inputDers" min="0"/></td>
+                <td><input type="text" name="MuafDersAdi" class="inputDers" /></td>
+                <td><input type="number" name="MuafDersKredisi" class="inputDers" min="0"/></td>
+                <td><input type="number" name="MuafDersAkts" class="inputDers" min="0"/></td>
+                <td><input type="text" name="MuafDersKodu" class="inputDers" /></td>
+              </tr>
+            </tbody>
+          </table>
+          <button id="ekleButton" style="border:none;border-radius:2px;">Ders Ekle</button>
+        </div>
+        <hr />
+        <!--! Yönetmelik Maddesi Componenti  -->
+        <div class="Component">
+          <div class="yonetmelik">
+            <span style="font-size: 0.7rem"
+              >ERZURUM TEKNİK ÜNİVERSİTESİ LİSANS EĞİTİM-ÖĞRETİM VE SINAV
+              YÖNETMELİĞİ</span
+            >
+            <hr />
+            <p style="font-size: 0.7rem">
+              MADDE 16-(1) Ders muafiyeti başvuruları, öğrencinin Üniversiteye
+              ders kaydı yaptırdığı ilk yarıyılın yılın ilk haftasının sonuna
+              kadar yapılır. Ek kontenjan ve dikey geçiş sınavı ile kayıt
+              yaptıran öğrenciler, Üniversiteye kayıt yaptırdıkları tarihi takip
+              eden ilk hafta içerisinde muafiyet talebinde bulunabilirler.
+              Sonraki yarıyıl yıllarda yapılacak muafiyet talepleri kabul
+              edilmez. Öğrenciler, lisans öğrenimlerine devam ederken eş zamanlı
+              olarak başka bir yükseköğretim programından alıp başarılı olduğu
+              ilgili ders derslerden başarılı oldukları yarıyılı yılı takip eden
+              yarıyıl/yılın ilk haftası içerisinde muafiyet talebinde
+              bulunabilirler. (2) ÖSYM tarafından yerleştirilen, Üniversiteye
+              yeniden kayıt hakkı kazanan, diğer yükseköğretim kurumlarından
+              Üniversiteye yatay geçiş yapan, dikey geçiş ile kayıt yaptıran ve
+              Üniversite içerisinde bölüm değiştiren öğrencilerin, daha önce
+              devam ettikleri yükseköğretim programında başarılı oldukları
+              derslerden 27 nci maddeye göre muaf olarak değerlendirilebilmesi
+              için dekanlığa müdürlüğe muaf olmak istediklerini belirten bir
+              dilekçe ve ekinde not döküm belgesi ile ders içeriklerini kapsayan
+              onaylı belgelerle başvurmaları gerekir. İlgili yönetim
+              kurullarınca muafiyetleri uygun görülen derslerin harf notları,
+              öğrencinin not döküm belgesine aynen işlenir. Sayısal notlar ise
+              Yükseköğretim Kurulunun not dönüşüm tablosuna göre harf notlarına
+              çevrilir ve işlenir.
+            </p>
+          </div>
+        </div>
+        <hr />
+        <!--! Gerekli Belgeler Componenti  -->
+        <div class="Component">
+          <h3>Yüklenmesi Gereken Belgeler</h3>
+          <div class="belgeler">
+            <div class="file">
+              <span style="font-weight: bold;font-size:.9rem;">Transkript Belgesi (Onaylı)</span>
+              <input
+                type="file"
+                name="Transkript"
+                id="transkript"
+                accept=".pdf"
+                required
+              />
+            </div>
+            <div class="file">
+              <span style="font-weight: bold; font-size:.9rem;">Ders Döküm Belgesi (Onaylı)</span>
+              <input
+                type="file"
+                name="DersIcerik"
+                id="dersDokum"
+                accept=".pdf"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <hr />
+        <!-- Submit butonu -->
+            <input type="submit" id="submitBtn" value="Gönder" />
+      </form>
+      <!-- ! End / -->
+    </div>
+  </body>
+  <script src="/js/form.js"></script>
+</html>

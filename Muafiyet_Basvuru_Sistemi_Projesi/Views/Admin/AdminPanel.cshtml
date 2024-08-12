@@ -1,0 +1,278 @@
+@model MuafiyetProjesi2024.Models.AdminViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baş Yönetici Sayfası</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/AdminPanel.css">
+    <style>
+       .delete{
+        background-color: red;
+        height: 30px;
+        color: white;
+        border:none;
+        border-radius:6px;
+        }
+        .delete:hover{
+         color:red;
+         background-color:white;
+        }
+        .a:hover{
+         color:white;
+        }
+
+        .closeForm {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: right;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: white;
+        }
+        .closeForm:hover {
+            color: red;
+        }
+         .logout-icon{
+        text-decoration:none; 
+        font-size:25px;
+        opacity:.8;
+        margin-right:3px;
+        color:#3366a0;
+        }
+        .logout-icon:hover{
+        color:red;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="PanelLogo">
+            <img src="/image/logo.png" />
+            <span>ERZURUM TEKNİK ÜNİVERSİTESİ</span>
+        </div>
+        <div class="PanelButton">
+            <button id="kullaniciButton">Kullanıcı İşlemleri</button>
+            <button id="basvuruButton">Başvuru İşlemleri</button>
+            <a href="@Url.Action("AdminLogoutAndRedirect", "Admin")" class="fas fa-sign-out-alt logout-icon"></a>
+        </div>
+    </nav>
+    <div class="panels">
+        <!-- ! Kullanıcı Bilgisi Paneli -->
+        <div class="panel" id="kullaniciPanel">
+            <div class="headerPanel">
+                <div>
+                    <h1 style="font-size:2rem;">Kullanıcı Bilgileri</h1>
+                    <span class="close" id="kullaniciPanel-close">X</span>
+                </div>
+            </div>
+            <!-- ! Kullanıcı Kayıt Formu -->
+            <div class="kayitFormPanel">
+                <div class="form-container">
+                    <div>
+                        <span class="closeForm" id="kayitFormPanel-close">X</span>
+                    </div>
+                    <div class="form-header">
+                        <img src="/image/logo.png" />
+                    </div>
+                    <form id="kayitForm" method="post" asp-action="Register" autocomplete="off" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <p>@ViewBag.Message</p>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-id-card"></i>
+                                </span>
+                                <input type="text" class="form-control" name="AdSoyad" id="UnameSurname" placeholder="Adı-Soyadı" required/>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" name="Sifre" id="Upassword" placeholder="Şifre" required/>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input type="email" class="form-control" name="Mail" id="Uemail" placeholder="Email" required/>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-building"></i>
+                                </span>
+                                <input type="text" class="form-control" name="BolumBilgisi" id="Udepartman" placeholder="Bölüm" required/>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user-tie"></i>
+                                </span>
+                                <input type="text" class="form-control" name="Yetkisi" id="Uauthority" placeholder="Yetki" required/>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary" id="submit">Kaydet</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- ! Kullanıcı Düzenleme Formu -->
+            <div class="editFormPanel">
+                <div class="form-container">
+                    <div>
+                        <span class="closeForm" id="editFormPanel-close">X</span>
+                    </div>
+                    <div class="form-header">
+                        <img src="/image/logo.png" />
+                    </div>
+                    <form id="editForm" method="post" asp-action="UpdateUser" autocomplete="off" enctype="multipart/form-data">
+                        <input type="hidden" name="Mail" id="editMail" /> <!-- Kullanıcıyı eşleştirmek için gizli input -->
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-id-card"></i>
+                                </span>
+                                <input type="text" class="form-control" name="AdSoyad" id="editAdSoyad" placeholder="Adı-Soyadı" required />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" name="Sifre" id="editSifre" placeholder="Şifre"  />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input type="email" class="form-control" name="Mail" id="editEmail" placeholder="Email" readonly />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-building"></i>
+                                </span>
+                                <input type="text" class="form-control" name="BolumBilgisi" id="editBolum" placeholder="Bölüm" required />
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary" id="submit">Güncelle</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- ! Kullanıcılar Tablosu -->
+            <div class="kullaniciTable">
+                <div class="Eklebutton">
+                    <button id="ekleButton">Kullanıcı Ekle</button>
+                </div>
+                <table class="Table" id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Adı - Soyadı</th>
+                            <th>E-posta</th>
+                            <th>Bölüm</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Veriler dinamik olarak buraya eklenecek -->
+                        @foreach (var adminKullanici in Model.AdminKullanicilar)
+                        {
+                            <tr>
+                                <td>@adminKullanici.AdSoyad</td>
+                                <td>@adminKullanici.Mail</td>
+                                <td>@adminKullanici.BolumBilgisi</td>
+                                <td>
+                                    <form method="post" action="/Admin/DeleteUser" style="display:inline;">
+                                        <input type="hidden" name="email" value="@adminKullanici.Mail" />
+
+                                        @if (adminKullanici.Mail != ViewBag.LoggedInUserMail)
+                                        {
+                                            <button type="submit" class="fas fa-trash-alt delete"></button>
+                                        }
+
+                                    </form>
+                                    <button  class=" fas fa-pencil-alt  editButton"></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- ! Başvuru Bilgisi Paneli -->
+        <div class="panel" id="basvuruPanel">
+            <div class="headerPanel">
+                <div>
+                    <h1 style="font-size:2rem;">Başvuru Bilgileri</h1>
+                    <span class="close" id="basvuruPanel-close">X</span>
+                </div>
+            </div>
+            <div class="filtre">
+                <form method="post" action="/Admin/BasvuruFiltrele">
+                    <select name="filtreSelect" id="filtreSelect">
+                        <option value="">Bölüm Filtrele</option>
+                        <option value="Bilgisayar Mühendisliği">Bilgisayar Mühendisliği</option>
+                        <option value="Elektrik Elektronik Mühendisliği">Elektrik Elektronik Mühendisliği</option>
+                        <option value="Endüstri Mühendisliği">Endüstri Mühendisliği</option>
+                        <option value="Makine Mühendisliği">Makine Mühendisliği</option>
+                        <option value="Mimarlık">Mimarlık</option>
+                    </select>
+                </form>
+            </div>
+            <table class="Table" id="basvuruTable">
+                <thead>
+                    <tr>
+                        <th>Adı - Soyadı</th>
+                        <th>E-posta</th>
+                        <th>Bölüm</th>
+                        <th>Başvuru Belgesi</th>
+                        <th>Transkript</th>
+                        <th>Ders Döküm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Veriler dinamik olarak buraya eklenecek -->
+                    @foreach (var basvuru in Model.Basvurular)
+                    {
+                       <tr>
+                            <td>@basvuru.AdSoyad</td>
+                            <td>@basvuru.Mail</td>
+                            <td>@basvuru.BolumBaskanligi</td>
+                            <td><a id="Basvuru" style="color:red;font-size:20px;" class="fas fa-file-pdf a" href="/uploads/@($"{basvuru.Tckimlik}-Basvuru.pdf")" target="_blank"></a></td>
+                            <td><a id="Transkript" style="color:red;font-size:20px;" class="fas fa-file-pdf" href="/uploads/@($"{basvuru.Tckimlik}-Transkript.pdf")" target="_blank"></a></td>
+                            <td><a id="DersDokum" style="color:red;font-size:20px;" class="fas fa-file-pdf" href="/uploads/@($"{basvuru.Tckimlik}-DersDokum.pdf")" target="_blank"></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Bootstrap Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/bootstrap-icons.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/js/AdminP.js"></script>
+</body>
+</html>

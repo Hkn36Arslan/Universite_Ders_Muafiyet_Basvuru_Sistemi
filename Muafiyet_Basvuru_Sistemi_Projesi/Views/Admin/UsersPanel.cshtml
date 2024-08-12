@@ -1,0 +1,98 @@
+@model List<MuafiyetProjesi2024.Models.Basvuru>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetici Sayfası</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/AdminPanel.css">
+    <style>
+    .closeForm{
+        display:flex;
+        align-items:center;
+        justify-content: flex-end;
+        text-align: right;
+        cursor: pointer;
+        font-size:18px;
+        border-radius:10px;
+        font-weight: bold;
+        color:white;
+    }
+    .closeForm:hover{
+        color:red;
+    }
+    .logout-icon{
+        text-decoration:none; 
+        font-size:25px;
+        opacity:.8;
+        margin-right:3px;
+        color:#3366a0;
+    }
+    .logout-icon:hover{
+        color:red;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="PanelLogo">
+            <img src="/image/logo.png" />
+            <span>ERZURUM TEKNİK ÜNİVERSİTESİ</span>
+        </div>
+        <div class="PanelButton">
+            <button id="basvuruButton">Başvuru İşlemleri</button>
+            <a href="AdminLogin" class="fas fa-sign-out-alt logout-icon"></a>
+        </div>
+    </nav>
+    <div class="panels">
+        <!-- ! Başvuru Bilgisi Paneli -->
+        <div class="panel" id="basvuruPanel">
+            <div class="headerPanel">
+                <div>
+                  <h1 style="font-size:2rem;">Başvuru Bilgileri</h1>
+                  <span class="close" id="basvuruPanel-close">X</span>
+                </div>
+            </div>
+            <div class="filtre">
+                <form method="post" action="/Admin/BasvuruFiltrele">
+                
+                </form>
+            </div>
+            <table class="Table" id="basvuruTable">
+                <thead>
+                    <tr>
+                        <th>Adı - Soyadı</th>
+                        <th>E-posta</th>
+                        <th>Bölüm</th>
+                        <th>Başvuru Belgesi</th>
+                        <th>Transkript</th>
+                        <th>Ders Döküm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Veriler dinamik olarak buraya eklenecek -->
+                    @foreach (var basvuruBolumeGore in Model)
+                    {
+                        <tr>
+                            <td>@basvuruBolumeGore.AdSoyad</td>
+                            <td>@basvuruBolumeGore.Mail</td>
+                            <td>@basvuruBolumeGore.BolumBaskanligi</td>
+                            <td><a id="Basvuru" style="color:red;font-size:20px;" class="fas fa-file-pdf" href="/uploads/@($"{basvuruBolumeGore.Tckimlik}-Basvuru.pdf")" target="_blank"></a></td>
+                            <td><a id="Transkript" style="color:red;font-size:20px;" class="fas fa-file-pdf" href="/uploads/@($"{basvuruBolumeGore.Tckimlik}-Transkript.pdf")" target="_blank"></a></td>
+                            <td><a id="DersDokum" style="color:red;font-size:20px;" class="fas fa-file-pdf" href="/uploads/@($"{basvuruBolumeGore.Tckimlik}-DersDokum.pdf")" target="_blank"></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Bootstrap Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/bootstrap-icons.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/js/UsersP.js"></script>
+</body>
+</html>
