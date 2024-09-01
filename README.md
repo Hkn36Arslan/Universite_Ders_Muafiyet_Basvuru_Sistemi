@@ -60,4 +60,5 @@ Bu proje, ASP.NET Core MVC, HTML, CSS ve JavaScript kullanılarak geliştirilmi�
    - Yönetici, başvuruları görüntüleyebilir ve başvurulara ait belgeleri inceleyebilir.
    - Süper Admin, bölüm yöneticilerini ekleyebilir veya silebilir.
 3. **Proje Demo Videosu:**
-   
+   [Hkn36Arslan_Universite_Ders_Muafiyet_Basvuru_Sistemi_ HTML,Css,JavaScript ile tasarlanmış .Net Core MVC tabanlı Üniversite Ders Muafiyet Başvuru Sistemi - Google Chrome 2024-09-01 23-50-32 (onlin.zip](https://github.com/user-attachments/files/16830547/Hkn36Arslan_Universite_Ders_Muafiyet_Basvuru_Sistemi_.HTML.Css.JavaScript.ile.tasarlanmis.Net.Core.MVC.tabanli.Universite.Ders.Muafiyet.Basvuru.Sistemi.-.Google.Chrome.2024-09-01.23-50-32.onlin.zip)
+
